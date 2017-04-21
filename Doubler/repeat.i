@@ -4,6 +4,7 @@
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 1 "<command-line>" 2
 # 1 "repeat.c"
+
 # 1 "/usr/include/stdio.h" 1 3 4
 # 27 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/features.h" 1 3 4
@@ -834,17 +835,24 @@ extern int ftrylockfile (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__)
 extern void funlockfile (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__));
 # 943 "/usr/include/stdio.h" 3 4
 
-# 2 "repeat.c" 2
+# 3 "repeat.c" 2
 
 int main()
 {
+
     int num = 123;
     int sum = 0;
+    int i;
 
-    sum = sum + num;
-    sum = sum + num;
+
+    for(i=1; i<=4; i++)
+    {
+        sum = sum + num;
+    }
+
 
     printf("%d\n\r", sum);
+
 
     return 0;
 }

@@ -14,13 +14,18 @@ main:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	movl	$123, -8(%rbp)
-	movl	$0, -4(%rbp)
-	movl	-8(%rbp), %eax
-	addl	%eax, -4(%rbp)
-	movl	-8(%rbp), %eax
-	addl	%eax, -4(%rbp)
+	movl	$123, -4(%rbp)
+	movl	$0, -12(%rbp)
+	movl	$1, -8(%rbp)
+	jmp	.L2
+.L3:
 	movl	-4(%rbp), %eax
+	addl	%eax, -12(%rbp)
+	addl	$1, -8(%rbp)
+.L2:
+	cmpl	$4, -8(%rbp)
+	jle	.L3
+	movl	-12(%rbp), %eax
 	movl	%eax, %esi
 	movl	$.LC0, %edi
 	movl	$0, %eax
